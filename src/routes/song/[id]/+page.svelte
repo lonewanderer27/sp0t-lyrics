@@ -22,7 +22,7 @@
 		<Icon name="share-social-outline" />
 	</Button>
 </Navbar>
-<div class="font-bold text-2xl p-6">
+<div class="font-bold text-2xl px-6 pt-6 pb-20">
 	{#each lyrics.derived as lyric}
 		<p
 			class={` ${

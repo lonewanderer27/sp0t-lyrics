@@ -31,9 +31,9 @@
 	});
 </script>
 
-<title>JAMMA Lyrics</title>
+<title>Sp0tify Lyrics</title>
 
-<div class="p-3">
+<div class="px-3 pt-3 pb-10">
 	<List>
 		<input
 			class="input input-bordered w-11/12 mt-5 mx-3"
@@ -41,21 +41,19 @@
 			on:input={handleInput}
 			bind:value={searchTerm}
 		/>
-	</List>
-	
-	{#if $query.isLoading}
-		<Block>
-			<div class="text-center">
-				<Preloader />
-			</div>
-		</Block>
-	{/if}
-	
-	{#if $query.isSuccess}
-		<List>
+
+		{#if $query.isLoading}
+			<Block>
+				<div class="text-center">
+					<Preloader />
+				</div>
+			</Block>
+		{/if}	
+
+		{#if $query.isSuccess}
 			{#each $query.data?.derived as song}
-				<SongItem {song} />
-			{/each}
-		</List>
-	{/if}	
+			<SongItem {song} />
+		{/each}
+		{/if}
+	</List>	
 </div>
