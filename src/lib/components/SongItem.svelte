@@ -43,7 +43,7 @@
 </script>
 
 <ListItem link onClick={() => goto(`/song/${song.id}`)}>
-	<p slot="title" class="line-clamp-1">{song.title}</p>
+	<p slot="title" class={`line-clamp-1 ${$isPlayingStore && $playingAudioURLStore === songURL ? "text-secondary" : ""}`}>{song.title}</p>
 	<p slot="subtitle" class="line-clamp-1">{song.artist_names}</p>
 	<img
 		slot="media"

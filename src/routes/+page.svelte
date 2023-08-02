@@ -36,7 +36,7 @@
 <div class="px-3 pt-3 pb-10">
 	<List>
 		<input
-			class="input input-bordered w-11/12 mt-5 mx-3"
+			class="input input-bordered w-11/12 my-5 mx-3"
 			placeholder="Search lyrics or song title"
 			on:input={handleInput}
 			bind:value={searchTerm}

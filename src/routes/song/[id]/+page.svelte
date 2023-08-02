@@ -15,9 +15,11 @@
 	titleClass="w-[15rem]  truncate"
 	subtitle={derived.artist_names}
 	subtitleClass="w-22 truncate"
-	class="top-0 sticky"
+	class="top-0 sticky px-4"
+	outline={false}
+	translucent={true}
 >
-	<NavbarBackLink slot="left" onClick={() => goto('/')} />
+	<NavbarBackLink slot="left" onClick={() => goto('/')} showText={false} />
 	<Button slot="right" clear>
 		<Icon name="share-social-outline" />
 	</Button>
