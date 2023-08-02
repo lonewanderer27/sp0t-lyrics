@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Circular";
+  font-weight: 900;
+  font-style: normal; /* Black - Normal (non-italic) */
+  src: local("/fonts/CircularSpotifyText-Black.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Circular";
+  font-weight: 900;
+  font-style: italic; /* Black - Italic */
+  src: local("/fonts/CircularSpotifyText-BlackItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Circular";
+  font-weight: 700;
+  font-style: normal; /* Bold - Normal (non-italic) */
+  src: local("/fonts/CircularSpotifyText-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Circular";
+  font-weight: 400;
+  font-style: normal; /* Book - Normal (non-italic) */
+  src: local("/fonts/CircularSpotifyText-Book.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Circular";
+  font-weight: 400;
+  font-style: italic; /* Book - Italic */
+  src: local("/fonts/CircularSpotifyText-BookItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Circular";
+  font-weight: 300;
+  font-style: normal; /* Light - Normal (non-italic) */
+  src: local("/fonts/CircularSpotifyText-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Circular";
+  font-weight: 500;
+  font-style: normal; /* Medium - Normal (non-italic) */
+  src: local("/fonts/CircularSpotifyText-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Circular";
+  font-weight: 500;
+  font-style: italic; /* Medium - Italic */
+  src: local("/fonts/CircularSpotifyText-MediumItalic.otf") format("opentype");
+}
+
+body {
+  font-family: "Circular Spotify Text Bold" !important;
+}
