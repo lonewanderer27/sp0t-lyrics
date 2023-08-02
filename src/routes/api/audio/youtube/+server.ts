@@ -57,18 +57,7 @@ export const GET: RequestHandler = async (event) => {
     // audioStream.pipe(event)
     console.log(`Streaming: ${info.videoDetails.title}`)
 
-    const stream = new ReadableStream({
-      start(controller) {
-        audioStream.on("data", (chunk: unknown) => {
-          controller.enqueue(chunk)
-        })
-        audioStream.on("end", () => {
-          controller.close()
-        })
-      }
-    })
-
-    return new Response(stream, {
+    return new Response(audioStream, {
       headers: {
         'content-type': 'audio/mpeg'
       }
