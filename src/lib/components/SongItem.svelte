@@ -6,8 +6,7 @@
 	import { playingAudioURLStore, isPlayingStore, playingAudioInfoStore } from '../../stores/music';
 	import { useQueryClient, createQuery } from '@tanstack/svelte-query';
 	import { GeniusServices } from '$lib/services/genius.service';
-
-	const queryClient = useQueryClient();
+	import { page } from '$app/stores';
 
 	export let song: Result;
 	let songURL: string | undefined;
@@ -40,9 +39,15 @@
 			}
 		}
 	};
+
+	const handleClick = () => {
+		let query = new URLSearchParams($page.url.searchParams.toString())
+		query.set('url', song.path?.toString()!)
+		goto(`/song/${song.id}?${query.toString()}`)
+	}
 </script>
 
-<ListItem link onClick={() => goto(`/song/${song.id}`)}>
+<ListItem link onClick={handleClick}>
 	<p slot="title" class={`line-clamp-1 ${$isPlayingStore && $playingAudioURLStore === songURL ? "text-secondary" : ""}`}>{song.title}</p>
 	<p slot="subtitle" class="line-clamp-1">{song.artist_names}</p>
 	<img

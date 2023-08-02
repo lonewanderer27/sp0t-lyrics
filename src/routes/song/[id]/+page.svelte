@@ -4,8 +4,19 @@
 	import { Button, Navbar, NavbarBackLink, Page } from 'konsta/svelte';
 	import { Icon } from 'svelte-ionicons';
 	import { goto } from '$app/navigation';
+	import { audioLyrics, audioLyricsInfo } from '../../../stores/lyrics.js';
 
 	console.log('song info: ', derived);
+
+	// set the current audio lyrics to the lyrics of this song
+	$audioLyrics = lyrics.derived; 
+
+	// set the current audio info to the info of this song
+	$audioLyricsInfo = derived;
+
+	const handleSelectLyrics = () => {
+		goto("/lyrics/" + derived.id + "?url=" + derived.path);
+	}
 </script>
 
 <title>{derived.title}</title>
@@ -20,7 +31,7 @@
 	translucent={true}
 >
 	<NavbarBackLink slot="left" onClick={() => goto('/')} showText={false} />
-	<Button slot="right" clear>
+	<Button slot="right" clear onClick={handleSelectLyrics}>
 		<Icon name="share-social-outline" />
 	</Button>
 </Navbar>
