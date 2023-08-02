@@ -19,7 +19,7 @@ import { YoutubeServices } from '$lib/services/youtube.service';
 
 {#if $playingAudioInfoStore != undefined}
 <List class="left-0 bottom-[-32px] fixed backdrop-blur-xl z-50 w-full px-3 my-0">
-	<ListItem onClick={() => goto(`/song/${$playingAudioInfoStore.id}`)}>
+	<ListItem onClick={() => goto(`/song/${$playingAudioInfoStore.id}?url=${$playingAudioInfoStore.path}`)}>
 		<p slot="title" class="line-clamp-1">{$playingAudioInfoStore.title}</p>
 		<p slot="subtitle" class="line-clamp-1">{$playingAudioInfoStore.artist_names}</p>
 		<img
