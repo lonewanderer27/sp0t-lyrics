@@ -4,9 +4,14 @@
 	import { Button, Navbar, NavbarBackLink, Page } from 'konsta/svelte';
 	import { Icon } from 'svelte-ionicons';
 	import { goto } from '$app/navigation';
-	import { audioLyrics, audioLyricsInfo } from '../../../stores/lyrics.js';
+	import { audioLyrics, audioLyricsInfo, selectedLyrics } from '../../../stores/lyrics.js';
 
 	console.log('song info: ', derived);
+
+	// if it's not the same song, reset the selected lyrics
+	if ($audioLyrics !== lyrics.derived) {
+		$selectedLyrics = []
+	}
 
 	// set the current audio lyrics to the lyrics of this song
 	$audioLyrics = lyrics.derived; 
