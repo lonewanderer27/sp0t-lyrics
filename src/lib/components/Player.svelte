@@ -28,7 +28,7 @@ import { YoutubeServices } from '$lib/services/youtube.service';
 			alt={$playingAudioInfoStore.title}
 			class="w-12 h-12 rounded-md"
 		/>
-		<div slot="after" class="mb-[-1.5rem]">
+		<div slot="after" class="mb-[-1.5rem]" on:click={e => e.stopPropagation()} >
 			{#if $query.isLoading === true}
 				<span class="loading loading-ring loading-md" />
 			{/if}
@@ -39,9 +39,11 @@ import { YoutubeServices } from '$lib/services/youtube.service';
 						slot="media"
 						src={$query?.data?.derived}
 						autoplay
-						on:pause={() => ($isPlayingStore = false)}
+						on:pause={(e) => {
+							$isPlayingStore = false;
+							e.stopPropagation();
+						}}
 						on:playing={() => ($isPlayingStore = true)}
-						on:click={(e) => e.stopPropagation()}
 					/>
 					<media-control-bar>
 						<media-play-button />
