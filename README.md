@@ -1,38 +1,80 @@
-# create-svelte
+<h1 align="center" id="title">Sp0tify Lyrics</h1>
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+<p align="center"><img src="https://socialify.git.ci/lonewanderer27/sp0tify-lyrics-svelte/image?language=1&amp;name=1&amp;owner=1&amp;pattern=Signal&amp;theme=Auto" alt="project-image"></p>
 
-## Creating a project
+<p id="description">SvelteKit demo app to play music search and share lyrics to Instagram.</p>
 
-If you're seeing this, you've probably already done this step. Congrats!
+<h2>🚀 Demo</h2>
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+[https://sp0tify-lyrics.vercel.app/](https://sp0tify-lyrics.vercel.app/)
 
-# create a new project in my-app
-npm create svelte@latest my-app
+<h2>Project Screenshots:</h2>
+
+<img src="https://github.com/lonewanderer27/sp0tify-lyrics-svelte/blob/main/screenshots/screenshot_3_iphone_6_7_8_plus.png?raw=true" alt="project-screenshot" width="215px" height="400/">
+
+<img src="https://github.com/lonewanderer27/sp0tify-lyrics-svelte/blob/main/screenshots/screenshot_1_iphone_6_7_8_plus.png?raw=true" alt="project-screenshot" width="215px" height="400/">
+
+<img src="https://github.com/lonewanderer27/sp0tify-lyrics-svelte/blob/main/screenshots/screenshot_2_iphone_6_7_8_plus.png?raw=true" alt="project-screenshot" width="215px" height="400/">
+
+<img src="" alt="project-screenshot" width="400" height="400/">
+
+<img src="" alt="project-screenshot" width="400" height="400/">
+
+  
+  
+<h2>🧐 Features</h2>
+
+Here're some of the project's best features:
+
+*   Search and Play Music
+*   View Lyrics of a Song
+*   Share Lyrics to Instagram
+
+<h2>🛠️ Installation Steps:</h2>
+
+<p>1. Go to https://genius.com/ and register for an account for login</p>
+
+<p>2. Go to https://docs.genius.com/ and create a new client</p>
+
+<p>3. Generate an access token for your new client copy it to clipboard</p>
+
+<p>4. Clone this repository</p>
+
+<p>5. Inside the repo directory create a .env with this content</p>
+
+```
+PUBLIC_GENIUS_CLIENT_ACCESS_TOKEN=ACCESS_TOKEN_YOU_COPIED
 ```
 
-## Developing
+<p>6. Install dependencies</p>
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```
+pnpm i // use "npm i" if you're using npm
 ```
 
-## Building
+<p>7. Run the app</p>
 
-To create a production version of your app:
-
-```bash
-npm run build
+```
+pnpm dev // use "npm run dev" if you're using npm
 ```
 
-You can preview the production build with `npm run preview`.
+<p>8. Open the app on localhost:3001</p>
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+  
+  
+<h2>💻 Built with</h2>
+
+Technologies used in the project:
+
+*   SvelteKit
+*   Cheerio
+*   KonstaUI
+*   DaisyUI
+*   TailwindCSS
+*   media-chrome
+*   ytdl-core
+*   Genius
+
+<h2>🛡️ License:</h2>
+
+This project is licensed under the MIT License
