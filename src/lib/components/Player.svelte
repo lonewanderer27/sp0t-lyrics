@@ -10,7 +10,7 @@ import { YoutubeServices } from '$lib/services/youtube.service';
 		queryKey: [$playingAudioURLStore],
 		queryFn: async () => {
 			console.log('fetching audio: ', $playingAudioURLStore);
-			return await YoutubeServices.getAudio($playingAudioURLStore, true);
+			return await YoutubeServices.getAudio($playingAudioURLStore);
 		},
 		refetchOnWindowFocus: false,
 		enabled: $playingAudioURLStore !== ''
