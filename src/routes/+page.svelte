@@ -25,10 +25,7 @@
 		refetchOnWindowFocus: false
 	});
 
-	$: query.subscribe((e) => {
-		console.log('derived data:', e.data?.derived);
-		console.log('server data: ', e.data?.server);
-	});
+	$: console.log('songs data:', $query.data?.songs);
 </script>
 
 <title>Sp0tify Lyrics</title>
@@ -51,7 +48,7 @@
 		{/if}	
 
 		{#if $query.isSuccess}
-			{#each $query.data?.derived as song}
+			{#each $query.data?.songs as song}
 			<SongItem {song} />
 		{/each}
 		{/if}

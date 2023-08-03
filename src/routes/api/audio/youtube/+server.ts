@@ -3,6 +3,7 @@ import ytdl from "ytdl-core";
 
 export const GET: RequestHandler = async (event) => {
   const url = event.url.searchParams.get("url");
+  const urlOnly = event.url.searchParams.get("urlOnly");
 
   // check if the user has passed url
   if (!url) {
@@ -28,7 +29,6 @@ export const GET: RequestHandler = async (event) => {
 
     // get the video info from youtube
     const info = await ytdl.getInfo(url);
-    console.log("Video info: ", info)
     
     // get audio formats
     const audioFormats = ytdl.filterFormats(info.formats, "audioonly");
@@ -46,6 +46,21 @@ export const GET: RequestHandler = async (event) => {
     
     // otherwise log the audio formats
     console.log("Audio formats: ", audioFormats)
+
+    // if the user only wants the url, return it
+    if (urlOnly) {
+      console.log("Sent YT URL: ")
+      console.log(audioFormats[0].url)
+      return json({
+        url: audioFormats[0].url,
+      }, {
+        headers: {
+          'content-type': 'application/json'
+        },
+        status: 200,
+        statusText: "OK"
+      })
+    }
 
     // create a readable stream from the lowest audio format
     const audioStream = ytdl(url, {

@@ -10,7 +10,7 @@ import { YoutubeServices } from '$lib/services/youtube.service';
 		queryKey: [$playingAudioURLStore],
 		queryFn: async () => {
 			console.log('fetching audio: ', $playingAudioURLStore);
-			return await YoutubeServices.getAudio($playingAudioURLStore);
+			return await YoutubeServices.getAudio($playingAudioURLStore, true);
 		},
 		refetchOnWindowFocus: false,
 		enabled: $playingAudioURLStore !== ''
@@ -37,7 +37,7 @@ import { YoutubeServices } from '$lib/services/youtube.service';
 				<media-controller audio>
 					<audio
 						slot="media"
-						src={$query?.data?.derived}
+						src={$query?.data?.url}
 						autoplay
 						on:pause={(e) => {
 							$isPlayingStore = false;

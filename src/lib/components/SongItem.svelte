@@ -18,7 +18,7 @@
 	});
 
 	// get the song url
-	$: songURL = $query?.data?.derived?.media.find((m) => m.provider === 'youtube')?.url;
+	$: songURL = $query?.data?.song?.media.find((m) => m.provider === 'youtube')?.url;
 	// let hovered = false;
 
 	const handlePlay = async () => {

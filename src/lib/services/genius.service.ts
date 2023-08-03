@@ -22,14 +22,13 @@ export const GeniusServices = {
     console.log("songs: ", songs);
     return {
       server: res.data,
-      derived: songs,
+      songs: songs,
     };
   },
   async getSong(id: number) {
     const res = await genius.get<GeniusSong>(`/songs/${id}`);
     return {
-      server: res.data,
-      derived: res.data.response.song,
+      song: res.data.response.song,
     };
   },
   async getLyrics(url: string) {
@@ -54,7 +53,7 @@ export const GeniusServices = {
       });
     });
     return {
-      derived: lyrics,
+      lyrics,
     };
   },
 };
