@@ -16,10 +16,6 @@
 
 <img src="https://github.com/lonewanderer27/sp0tify-lyrics-svelte/blob/main/screenshots/screenshot_2_iphone_6_7_8_plus.png?raw=true" alt="project-screenshot" width="215px" height="400/">
 
-<img src="" alt="project-screenshot" width="400" height="400/">
-
-<img src="" alt="project-screenshot" width="400" height="400/">
-
   
   
 <h2>🧐 Features</h2>
