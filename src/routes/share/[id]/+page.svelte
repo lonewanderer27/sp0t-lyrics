@@ -1,12 +1,32 @@
 <script lang="ts">
-    import {Navbar, NavbarBackLink, Page} from 'konsta/svelte';
+    import {Navbar, NavbarBackLink, Page, Button} from 'konsta/svelte';
     import {audioLyricsInfo, selectedLyrics} from '../../../stores/lyrics';
     import {goto} from '$app/navigation';
-    import { Icon } from "svelte-ionicons";
+    import {Icon} from "svelte-ionicons";
+    import html2canvas from "html2canvas";
 
     const handleBack = () => {
         goto(`/lyrics/${$audioLyricsInfo.id}?url=${$audioLyricsInfo.url}`);
     };
+
+    const getImage = async () => {
+        const canvas = await html2canvas(document.getElementById("lyric-card-container")!, {
+            proxy: "/api/proxy/image",
+        })
+        return canvas.toDataURL("image/png");
+        // domtoimage.toSvg
+    }
+
+    const download = async () => {
+        const fakeLink = window.document.createElement("a");
+        fakeLink.style.display = "none";
+        fakeLink.download = "screenshot.png";
+        fakeLink.href = await getImage();
+        document.body.appendChild(fakeLink);
+        fakeLink.click();
+        document.body.removeChild(fakeLink);
+    }
+
 </script>
 
 <Page>
@@ -15,15 +35,19 @@
           class="px-4"
   >
     <NavbarBackLink slot="left" onClick={handleBack}/>
+    <Button slot="right" onClick={download}>
+      <Icon name="download-outline"/>
+    </Button>
   </Navbar>
 
-  <div class="p-10 flex flex-col justify-center">
-    <div class="lyric-card p-5 shadow-xl bg-base-100  rounded-xl">
-      <div class="lyric-card-header grid grid-cols-5">
-        <div class="lyric-card-image col-span-1">
-          <img src={$audioLyricsInfo.header_image_thumbnail_url} alt={$audioLyricsInfo.title} class="w-10 h-auto"/>
+  <div id="lyric-card-container" class="p-10 flex flex-col justify-center">
+    <div id="lyric-card" class="lyric-card p-5 shadow-xl bg-base-100 rounded-xl">
+      <div class="lyric-card-header flex ">
+        <div class="lyric-card-image mr-4">
+          <img src={$audioLyricsInfo.header_image_thumbnail_url}
+               alt={$audioLyricsInfo.title} class="w-10 h-auto rounded-sm"/>
         </div>
-        <div class="col-span-4">
+        <div>
           <p class="lyric-card-title font-semibold truncate">{$audioLyricsInfo.title}</p>
           <p class="lyric-card-artist text-xs">{$audioLyricsInfo.artist_names}</p>
         </div>
