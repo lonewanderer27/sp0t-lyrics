@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://socialify.git.ci/lonewanderer27/sp0tify-lyrics-svelte/image?language=1&amp;name=1&amp;owner=1&amp;pattern=Signal&amp;theme=Auto" alt="project-image"></p>
 
-<p id="description">SvelteKit demo app to play music search and share lyrics to Instagram.</p>
+<p id="description">SvelteKit demo app to play music, search and share lyrics to social media platforms.</p>
 
 <h2>🚀 Demo</h2>
 
@@ -14,7 +14,7 @@
 
 <img src="https://github.com/lonewanderer27/sp0tify-lyrics-svelte/blob/main/screenshots/screenshot_1_iphone_6_7_8_plus.png?raw=true" alt="project-screenshot" width="215px" height="400/">
 
-<img src="https://github.com/lonewanderer27/sp0tify-lyrics-svelte/blob/main/screenshots/screenshot_2_iphone_6_7_8_plus.png?raw=true" alt="project-screenshot" width="215px" height="400/">
+<img src="https://github.com/lonewanderer27/sp0tify-lyrics-svelte/blob/main/screenshots/screenshot_4_iphone_6_7_8_plus.png?raw=true" alt="project-screenshot" width="215px" height="400/">
 
   
   
@@ -54,7 +54,7 @@ pnpm i // use "npm i" if you're using npm
 pnpm dev // use "npm run dev" if you're using npm
 ```
 
-<p>8. Open the app on localhost:3001</p>
+<p>8. Open the app on localhost:3000</p>
 
   
   
