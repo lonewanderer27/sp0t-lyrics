@@ -29,18 +29,18 @@
 </script>
 
 <Page>
-  <title>{$audioLyricsInfo.title}</title>
+  <title>{$audioLyricsInfo?.title ?? "..."}</title>
 
   <Navbar
-          title={$audioLyricsInfo.title}
+          title={$audioLyricsInfo?.title ?? "..."}
           titleClass="w-[15rem]  truncate"
-          subtitle={$audioLyricsInfo.artist_names}
+          subtitle={$audioLyricsInfo?.artist_names ?? "..."}
           subtitleClass="w-22 truncate"
           class="top-0 sticky px-4"
           outline={false}
           translucent={true}
   >
-    <NavbarBackLink slot="left" onClick={() => goto('/')}/>
+    <NavbarBackLink slot="left" onClick={() => history.back()}/>
     <Button slot="right" clear onClick={handleSelectLyrics}>
       <Icon name="share-social-outline"/>
     </Button>
