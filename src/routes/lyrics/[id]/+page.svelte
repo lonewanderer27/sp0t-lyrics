@@ -43,7 +43,9 @@
           subtitle={$selectedLyrics.length <= 6
 		? $selectedLyrics.length + ' lines selected'
 		: 'Maximum lines selected'}
-          class={`px-4`}
+          class={`px-4 top-0 sticky`}
+          outline={false}
+          translucent={true}
   >
     <NavbarBackLink slot="left" onClick={handleBack}/>
   </Navbar>
