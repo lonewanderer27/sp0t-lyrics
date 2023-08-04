@@ -1,10 +1,9 @@
 import axios, { type AxiosRequestConfig } from "axios";
 
-import { json, type RequestHandler } from "@sveltejs/kit";
+import {json, type RequestEvent, type RequestHandler} from "@sveltejs/kit";
 import Util from "$lib/util";
 
-/** @type {import('./$types').RequestHandler} */
-export const GET: RequestHandler = async (event) => {
+export const GET: RequestHandler = async (event: RequestEvent) => {
   const endpoint = event.url.searchParams.get("endpoint")
   const headers = event.request.headers;
 

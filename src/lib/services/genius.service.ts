@@ -40,7 +40,7 @@ export const GeniusServices = {
     const lyrics: LyricType[] = [];
     dataX.each((i, el) => {
       const dtx = $(el).html();
-      $ = cheerio.load(dtx);
+      $ = cheerio.load(dtx+"");
       $("br").replaceWith("\n");
       const XRT = $.text();
       const strings = XRT.split("\n");

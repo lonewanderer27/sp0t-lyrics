@@ -1,7 +1,7 @@
-import { json, type RequestHandler } from "@sveltejs/kit";
+import {json, type RequestEvent, type RequestHandler} from "@sveltejs/kit";
 import ytdl from "ytdl-core";
 
-export const GET: RequestHandler = async (event) => {
+export const GET: RequestHandler = async (event: RequestEvent) => {
   const url = event.url.searchParams.get("url");
   const urlOnly = event.url.searchParams.get("urlOnly");
 
@@ -72,6 +72,8 @@ export const GET: RequestHandler = async (event) => {
     // audioStream.pipe(event)
     console.log(`Streaming: ${info.videoDetails.title}`)
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return new Response(audioStream, {
       headers: {
         'content-type': 'audio/mpeg'
