@@ -36,7 +36,32 @@ export const GeniusServices = {
       baseURL: "",
     });
     let $ = cheerio.load(res.data);
-    const dataX = $(".Lyrics__Container-sc-1ynbvzw-5.Dzxov");
+    const dataX = $(".Lyrics__Container-sc-1ynbvzw-1");
+    const lyrics: LyricType[] = [];
+    dataX.each((i, el) => {
+      const dtx = $(el).html();
+      $ = cheerio.load(dtx+"");
+      $("br").replaceWith("\n");
+      const XRT = $.text();
+      const strings = XRT.split("\n");
+      strings.forEach((str, i) => {
+        lyrics.push({
+          index: i,
+          text: str,
+          type: str.includes("[") ? "annotation" : "lyric",
+        });
+      });
+    });
+    return {
+      lyrics,
+    };
+  },
+  async getLyricsWithClass(url: string, className: string) {
+    const res = await genius.get(`https://genius.com${url}`, {
+      baseURL: "",
+    });
+    let $ = cheerio.load(res.data);
+    const dataX = $(`[class^="${className}"]`);
     const lyrics: LyricType[] = [];
     dataX.each((i, el) => {
       const dtx = $(el).html();
