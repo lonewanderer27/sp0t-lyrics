@@ -1,5 +1,6 @@
 <script lang="ts">
 	export let song;
+  import type { LyricType } from "../../../types/index.d.ts";
 
 	import { Navbar, NavbarBackLink, Page, Button } from 'konsta/svelte';
 	import { audioLyricsInfo, selectedLyrics, audioLyrics } from '../../../stores/lyrics';
@@ -100,13 +101,16 @@
 		fakeLink.style.display = 'none';
 
 		// construct the filename
-		const filename = `${$audioLyricsInfo.artist_names} - ${$audioLyricsInfo.title} - lyrics`;
+    
+    // get the selected lyrics
+    const lyrics = $selectedLyrics.map((lyric: LyricType) => lyric.text);
+
+    // construct a filename from the artist name and the title, and add the selected lyrics
+    const filename = `${$audioLyricsInfo.artist_names} - ${$audioLyricsInfo.title} - lyrics - ${lyrics.join(' ')}`;
 
 		fakeLink.download = `${filename}.png`;
 		fakeLink.href = await getImage();
-		document.body.appendChild(fakeLink);
 		fakeLink.click();
-		document.body.removeChild(fakeLink);
 	};
 </script>
 
