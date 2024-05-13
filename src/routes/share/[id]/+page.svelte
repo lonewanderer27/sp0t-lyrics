@@ -1,12 +1,60 @@
 <script lang="ts">
+    export let song;
+
     import {Navbar, NavbarBackLink, Page, Button} from 'konsta/svelte';
-    import {audioLyricsInfo, selectedLyrics} from '../../../stores/lyrics';
+    import {audioLyricsInfo, selectedLyrics, audioLyrics} from '../../../stores/lyrics';
     import {goto} from '$app/navigation';
+    import {page} from '$app/stores';
     import {Icon} from "svelte-ionicons";
     import html2canvas from "html2canvas";
 
+    // execute this code when the page is loaded
+    $: () => {
+      // check if audioLyricsInfo is empty
+      if (!$audioLyricsInfo) {
+        console.log("audioLyricsInfo is empty")
+
+        // attempt to populate it from what the server sent us
+        $audioLyricsInfo = song.song;
+
+        // set the current audio info to the info of this song
+        (async () => {
+            $audioLyricsInfo = await song.song;
+        })();
+      }
+
+      // check if audioLyrics is empty
+      if ($audioLyrics.length === 0) {
+        console.log("audioLyrics is empty")
+
+        // attempt to populate it from what the server sent us
+        $audioLyrics = song.lyrics;
+      }
+
+      // check if selected lyrics is empty
+      if ($selectedLyrics.length === 0) {
+        
+
+        // try to load the selected lyrics from the query parameter
+        const lyrics = $page.url.searchParams.get('lyrics');
+
+        // if the lyrics is not empty
+        if (lyrics) {
+          // set the selected lyrics to the lyrics from the query parameter
+          $selectedLyrics = JSON.parse(lyrics);
+        }
+      }
+    }
+
     const handleBack = () => {
-        goto(`/lyrics/${$audioLyricsInfo.id}?url=${$audioLyricsInfo.url}`);
+        // save the song id from the url
+        const id = $page.url.pathname.split('/')[2];
+
+        // save all the query parameters
+        let query = new URLSearchParams($page.url.searchParams.toString());
+
+        // go back to the song page with the song id and the query parameters
+        goto(`/lyrics/${id}?${query.toString()}`);
     };
 
     const getImage = async () => {

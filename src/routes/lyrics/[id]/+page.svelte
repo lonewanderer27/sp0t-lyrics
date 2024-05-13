@@ -5,7 +5,14 @@
     import {page} from '$app/stores';
 
     const handleBack = () => {
-        goto(`/song/${$audioLyricsInfo.id}?url=${$audioLyricsInfo.path}`);
+        // fetch the song id from the url
+        const id = $page.url.pathname.split('/')[2];
+
+        // save all the query parameters
+        let query = new URLSearchParams($page.url.searchParams.toString());
+
+        // go back to the lyrics page with the song id and the query parameters
+        goto(`/song/${id}?${query.toString()}`);
     };
 
     const handleShare = () => {
