@@ -4,6 +4,7 @@
     import {Button, Navbar, NavbarBackLink, Page} from 'konsta/svelte';
     import {Icon} from 'svelte-ionicons';
     import {goto} from '$app/navigation';
+    import {page} from '$app/stores';
     import {audioLyrics, audioLyricsInfo, selectedLyrics} from '../../../stores/lyrics.js';
 
     console.log('song info: ', song.song);
@@ -21,8 +22,22 @@
         $audioLyricsInfo = await song.song;
     })();
 
+    const handleBack = () => {
+        // save the q parameter
+        let query = new URLSearchParams($page.url.searchParams.toString());
+
+        // remove the url parameter
+        query.delete('url');
+
+        // go back to the search page with the q parameter
+        goto(`/?${query.toString()}`);
+    };
+
     const handleSelectLyrics = () => {
-        goto("/lyrics/" + song.song.id + "?url=" + song.song.path);
+        // go to share lyrics page but save the query params
+        const query = new URLSearchParams($page.url.searchParams.toString());
+
+        goto(`/lyrics/${song.song.id}?${query.toString()}`);
     }
 
     $: console.log("audio lyrics info: ", $audioLyricsInfo)
@@ -40,7 +55,7 @@
           outline={false}
           translucent={true}
   >
-    <NavbarBackLink slot="left" onClick={() => history.back()}/>
+    <NavbarBackLink slot="left" onClick={handleBack}/>
     <Button slot="right" clear onClick={handleSelectLyrics}>
       <Icon name="share-social-outline"/>
     </Button>
