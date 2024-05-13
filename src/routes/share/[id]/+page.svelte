@@ -77,8 +77,8 @@
 		// save the current viewport content
 		const viewportContent = viewport.content;
 
-		// set the viewport content to the width of the lyric card
-		viewport.content = 'width=800';
+		// set the viewport content to the width of the screen
+		viewport.content = 'width=device-width, initial-scale=1';
 
 		// fix line height issues
 		const cleanup = fixLineHeightIssues();
