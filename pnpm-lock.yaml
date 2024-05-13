@@ -17,6 +17,9 @@ dependencies:
   cheerio:
     specifier: 1.0.0-rc.12
     version: 1.0.0-rc.12
+  html-to-image:
+    specifier: ^1.11.11
+    version: 1.11.11
   html2canvas:
     specifier: ^1.4.1
     version: 1.4.1
@@ -1794,6 +1797,10 @@ packages:
     engines: {node: '>= 0.4.0'}
     dependencies:
       function-bind: 1.1.1
+
+  /html-to-image@1.11.11:
+    resolution: {integrity: sha512-9gux8QhvjRO/erSnDPv28noDZcPZmYE7e1vFsBLKLlRlKDSqNJYebj6Qz1TGd5lsRV+X+xYyjCKjuZdABinWjA==}
+    dev: false
 
   /html2canvas@1.4.1:
     resolution: {integrity: sha512-fPU6BHNpsyIhr8yyMpTLLxAbkaK8ArIBcmZIRiBLiDhjeqvXolaEmDGmELFuX9I4xDcaKKcJl+TKZLqruBbmWA==}
