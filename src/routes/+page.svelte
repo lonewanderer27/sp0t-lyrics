@@ -10,7 +10,7 @@
 
     let searchTerm = $page.url.searchParams.get('q')?.toString() ?? "";
     let debouncedSearchTerm = $page.url.searchParams.get('q')?.toString() ?? '';
-    let timeout: number;
+    let timeout: NodeJS.Timeout | null = null;
 
     const handleInput = () => {
         if (timeout) clearTimeout(timeout);
