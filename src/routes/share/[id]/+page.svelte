@@ -57,15 +57,15 @@
 
 	const fixLineHeightIssues = () => {
 		const style = document.createElement('style');
-    document.head.appendChild(style);
+		document.head.appendChild(style);
 
-    // fix the line height issues
-    style.sheet?.insertRule('body > div:last-child img { display: inline-block; }');
+		// fix the line height issues
+		style.sheet?.insertRule('body > div:last-child img { display: inline-block; }');
 
-    // reverse the line height fix via cleanup function
-    return () => {
-      style.remove();
-    };
+		// reverse the line height fix via cleanup function
+		return () => {
+			style.remove();
+		};
 	};
 
 	const getImage = async () => {
@@ -78,29 +78,31 @@
 		// set the viewport content to the width of the lyric card
 		viewport.content = 'width=500';
 
-    // fix line height issues
-    const cleanup = fixLineHeightIssues();
+		// fix line height issues
+		const cleanup = fixLineHeightIssues();
 
 		// wait for the next tick
 		const canvas = await html2canvas(document.getElementById('lyric-card-container')!, {
 			proxy: '/api/proxy/image',
-      backgroundColor: null,
+			backgroundColor: null
 		});
 
 		// set the viewport content back to the original
 		viewport.content = viewportContent;
 
-    // cleanup the line height fix
-    cleanup();
-
-		// return the image as a data url
+		// cleanup the line height fix
+		cleanup();
 		return canvas.toDataURL('image/png');
 	};
 
 	const download = async () => {
 		const fakeLink = window.document.createElement('a');
 		fakeLink.style.display = 'none';
-		fakeLink.download = 'screenshot.png';
+
+		// construct the filename
+		const filename = `${$audioLyricsInfo.artist_names} - ${$audioLyricsInfo.title} - lyrics`;
+
+		fakeLink.download = `${filename}.png`;
 		fakeLink.href = await getImage();
 		document.body.appendChild(fakeLink);
 		fakeLink.click();
@@ -111,8 +113,8 @@
 <Page>
 	<Navbar title="Share Lyrics" class="px-4">
 		<NavbarBackLink slot="left" onClick={handleBack} />
-		<Button slot="right" onClick={download}>
-			<Icon name="download-outline" />
+		<Button clear slot="right" onClick={download}>
+			<Icon name="cloud-download-outline" />
 		</Button>
 	</Navbar>
 
