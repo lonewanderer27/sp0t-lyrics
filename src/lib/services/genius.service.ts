@@ -63,6 +63,7 @@ export const GeniusServices = {
     let $ = cheerio.load(res.data);
     const dataX = $(`[class^="${className}"]`);
     const lyrics: LyricType[] = [];
+    let index = 0;
     dataX.each((i, el) => {
       const dtx = $(el).html();
       $ = cheerio.load(dtx+"");
@@ -71,12 +72,16 @@ export const GeniusServices = {
       const strings = XRT.split("\n");
       strings.forEach((str, i) => {
         lyrics.push({
-          index: i,
+          index: index++, // increment index for each lyric
           text: str,
           type: str.includes("[") ? "annotation" : "lyric",
         });
       });
     });
+
+    // console.log("lyrics: ", lyrics);
+    console.log("lyrics: ", lyrics);
+
     return {
       lyrics,
     };
